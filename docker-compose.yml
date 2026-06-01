@@ -1,0 +1,43 @@
+services:
+  postgres:
+    image: postgres:17-alpine
+    container_name: tictactoe-db
+    environment:
+      POSTGRES_DB: tictactoe
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d tictactoe"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: src/TicTacToe.API/Dockerfile
+    container_name: tictactoe-backend
+    ports:
+      - "5000:5000"
+    environment:
+      ConnectionStrings__Default: "Host=postgres;Port=5432;Database=tictactoe;Username=postgres;Password=postgres"
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+  frontend:
+    build:
+      context: ./frontend/tictactoe-ui
+      dockerfile: Dockerfile
+    container_name: tictactoe-frontend
+    ports:
+      - "4200:80"
+    depends_on:
+      - backend
+
+volumes:
+  postgres_data:
