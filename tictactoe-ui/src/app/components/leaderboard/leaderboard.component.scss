@@ -1,0 +1,70 @@
+.lb-page {
+  min-height: 100vh;
+  background: #11111b;
+  color: #cdd6f4;
+}
+
+.lb-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 1.5rem;
+  border-bottom: 1px solid #313244;
+  background: #1e1e2e;
+
+  h1 { margin: 0; font-size: 1.4rem; }
+}
+
+.loading, .empty {
+  text-align: center;
+  padding: 3rem;
+  color: #a6adc8;
+}
+
+.table-wrapper {
+  overflow-x: auto;
+  padding: 1.5rem;
+}
+
+.lb-table {
+  width: 100%;
+  border-collapse: collapse;
+
+  th {
+    text-align: left;
+    padding: 0.75rem 1rem;
+    color: #a6adc8;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    border-bottom: 1px solid #313244;
+  }
+
+  td {
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid #1e1e2e;
+  }
+
+  tr:hover td {
+    background: #1e1e2e;
+  }
+
+  tr.current-player td {
+    background: #2a2a3e;
+    font-weight: 600;
+  }
+}
+
+.rank { color: #a6adc8; width: 3rem; }
+.name { font-weight: 500; }
+.wins { color: #a6e3a1; }
+.losses { color: #f38ba8; }
+.winrate { color: #fab387; font-weight: 600; }
+
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  padding: 1.5rem;
+  color: #a6adc8;
+}

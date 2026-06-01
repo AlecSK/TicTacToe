@@ -1,0 +1,45 @@
+<div class="game-page">
+  <header class="game-header">
+    <span class="player-name">{{ nickname }}</span>
+    <a routerLink="/leaderboard" class="btn btn-ghost">Лидерборд</a>
+  </header>
+
+  @if (!game) {
+    <div class="start-screen">
+      <h2>Новая игра</h2>
+      <p>Кто ходит первым?</p>
+      <div class="start-buttons">
+        <button class="btn btn-primary" (click)="startGame(true)" [disabled]="loading">Я (X)</button>
+        <button class="btn btn-secondary" (click)="startGame(false)" [disabled]="loading">AI (X)</button>
+      </div>
+    </div>
+  }
+
+  @if (game) {
+    <div class="game-arena">
+      <div class="status-bar" [class.finished]="isFinished">
+        <span class="status-text">{{ statusText }}</span>
+        <span class="mark-info">Ты играешь за <strong>{{ game.playerMark }}</strong></span>
+      </div>
+
+      <app-board
+        [boardState]="game.boardState"
+        [disabled]="isBoardDisabled"
+        [playerMark]="game.playerMark"
+        (cellClicked)="onCellClick($event)"
+      />
+
+      @if (error) {
+        <p class="error">{{ error }}</p>
+      }
+
+      <div class="game-actions">
+        @if (isFinished) {
+          <button class="btn btn-primary" (click)="newGame()">Новая игра</button>
+        } @else {
+          <button class="btn btn-danger" (click)="resign()" [disabled]="loading">Сдаться</button>
+        }
+      </div>
+    </div>
+  }
+</div>
