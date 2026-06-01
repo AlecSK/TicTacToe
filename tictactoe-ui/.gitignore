@@ -42,3 +42,137 @@ __screenshots__/
 # System files
 .DS_Store
 Thumbs.db
+
+# Visual Studio / C# (backend)
+
+# User-specific files
+*.rsuser
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+*.userprefs
+mono_crash.*
+
+# Build results
+[Dd]ebug/
+[Dd]ebugPublic/
+[Rr]elease/
+[Rr]eleases/
+[Ww][Ii][Nn]32/
+[Aa][Rr][Mm]/
+[Aa][Rr][Mm]64/
+bld/
+[Oo]bj/
+[Oo]ut/
+[Ll]og/
+[Ll]ogs/
+**/[Bb]in/*
+
+# Visual Studio cache
+.vs/
+
+# MSTest / NUnit / test results
+[Tt]est[Rr]esult*/
+[Bb]uild[Ll]og.*
+*.trx
+*.VisualState.xml
+TestResult.xml
+nunit-*.xml
+*.received.*
+
+# Code coverage
+coverage*.json
+coverage*.xml
+coverage*.info
+*.coverage
+*.coveragexml
+BenchmarkDotNet.Artifacts/
+
+# .NET / NuGet
+project.lock.json
+project.fragment.lock.json
+artifacts/
+.artifacts/
+*.nupkg
+*.snupkg
+**/[Pp]ackages/*
+!**/[Pp]ackages/build/
+*.nuget.props
+*.nuget.targets
+
+# ReSharper
+_ReSharper*/
+*.[Rr]e[Ss]harper
+*.DotSettings.user
+
+# NCrunch
+_NCrunch_*
+.NCrunch_*
+.*crunch*.local.xml
+nCrunchTemp_*
+
+# DotCover / AxoCover
+*.dotCover
+.axoCover/*
+!.axoCover/settings.json
+
+# Build artifacts
+*.binlog
+MSBuild_Logs/
+
+# VS-generated files
+*_i.c
+*_p.c
+*_h.h
+*.ilk
+*.obj
+*.iobj
+*.pch
+*.pdb
+*.ipdb
+*.pgc
+*.pgd
+*.sbr
+*.tlb
+*.tli
+*.tlh
+*.tmp_proj
+*_wpftmp.csproj
+*.tlog
+*.vspscc
+*.vssscc
+*.pidb
+*.svclog
+
+# Publish / Azure
+*.[Pp]ublish.xml
+*.azurePubxml
+*.pubxml
+*.publishproj
+PublishScripts/
+csx/
+*.build.csdef
+ecf/
+rcf/
+
+# SQL Server
+*.mdf
+*.ldf
+*.ndf
+
+# Secrets & certificates (адаптировать под проект)
+*.pfx
+*.publishsettings
+
+# Paket / FAKE
+**/.paket/paket.exe
+paket-files/
+**/.fake/
+
+# Local history
+**/.localhistory/
+.vshistory/
+
+# Fody
+FodyWeavers.xsd

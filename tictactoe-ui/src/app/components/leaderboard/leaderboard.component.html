@@ -29,26 +29,18 @@
         <tbody>
           @for (entry of entries; track entry.id; let i = $index) {
             <tr [class.current-player]="entry.nickname === currentNickname">
-              <td class="rank">{{ (page - 1) * pageSize + i + 1 }}</td>
+              <td class="rank">{{ i + 1 }}</td>
               <td class="name">{{ entry.nickname }}</td>
               <td class="wins">{{ entry.wins }}</td>
               <td class="losses">{{ entry.losses }}</td>
               <td>{{ entry.draws }}</td>
               <td>{{ entry.totalGames }}</td>
-              <td class="winrate">{{ entry.winRate }}%</td>
+              <td class="winrate">{{ entry.winRate != null ? entry.winRate + '%' : '—' }}</td>
             </tr>
           }
         </tbody>
       </table>
     </div>
-
-    @if (totalPages > 1) {
-      <div class="pagination">
-        <button class="btn btn-ghost" (click)="goToPage(page - 1)" [disabled]="page === 1">←</button>
-        <span>{{ page }} / {{ totalPages }}</span>
-        <button class="btn btn-ghost" (click)="goToPage(page + 1)" [disabled]="page === totalPages">→</button>
-      </div>
-    }
   }
 
   @if (!loading && entries.length === 0 && !error) {

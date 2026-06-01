@@ -1,4 +1,4 @@
-import { Component, OnInit, inject } from '@angular/core';
+import { Component, OnInit, inject, ChangeDetectorRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { GameService } from '../../services/game.service';
@@ -15,18 +15,14 @@ import { LeaderboardEntryDto } from '../../models/models';
 export class LeaderboardComponent implements OnInit {
   private readonly gameService = inject(GameService);
   private readonly session = inject(SessionService);
+  private readonly cdr = inject(ChangeDetectorRef);
 
   currentNickname = this.session.getNickname() ?? '';
   entries: LeaderboardEntryDto[] = [];
   page = 1;
   pageSize = 10;
-  totalCount = 0;
   loading = false;
   error = '';
-
-  get totalPages(): number {
-    return Math.ceil(this.totalCount / this.pageSize);
-  }
 
   ngOnInit(): void {
     this.load();
@@ -34,22 +30,19 @@ export class LeaderboardComponent implements OnInit {
 
   load(): void {
     this.loading = true;
+    this.cdr.markForCheck();
+
     this.gameService.getLeaderboard(this.page, this.pageSize).subscribe({
-      next: (result) => {
-        this.entries = result.items;
-        this.totalCount = result.totalCount;
+      next: (items) => {
+        this.entries = items;
         this.loading = false;
+        this.cdr.markForCheck();
       },
       error: () => {
         this.error = 'Не удалось загрузить лидерборд';
         this.loading = false;
+        this.cdr.markForCheck();
       }
     });
-  }
-
-  goToPage(p: number): void {
-    if (p < 1 || p > this.totalPages) return;
-    this.page = p;
-    this.load();
   }
 }

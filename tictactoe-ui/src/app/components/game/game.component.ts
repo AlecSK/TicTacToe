@@ -1,4 +1,4 @@
-import { Component, OnInit, inject } from '@angular/core';
+import { Component, OnInit, inject, ChangeDetectorRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router, RouterLink } from '@angular/router';
 import { BoardComponent } from '../board/board.component';
@@ -17,6 +17,7 @@ export class GameComponent implements OnInit {
   private readonly gameService = inject(GameService);
   private readonly session = inject(SessionService);
   private readonly router = inject(Router);
+  private readonly cdr = inject(ChangeDetectorRef);
 
   nickname = this.session.getNickname() ?? '';
   game: GameStateDto | null = null;
@@ -51,16 +52,19 @@ export class GameComponent implements OnInit {
   startGame(playerStarts: boolean): void {
     this.loading = true;
     this.error = '';
+    this.cdr.markForCheck();
 
     this.gameService.startGame(this.nickname, playerStarts).subscribe({
       next: (game) => {
         this.game = game;
         this.session.setGameId(game.gameId);
         this.loading = false;
+        this.cdr.markForCheck();
       },
       error: () => {
         this.error = 'Не удалось начать игру';
         this.loading = false;
+        this.cdr.markForCheck();
       }
     });
   }
@@ -69,6 +73,8 @@ export class GameComponent implements OnInit {
     if (!this.game || this.isBoardDisabled) return;
 
     this.loading = true;
+    this.cdr.markForCheck();
+
     this.gameService.makeMove(this.game.gameId, this.nickname, cellIndex).subscribe({
       next: (result) => {
         this.game = result;
@@ -76,10 +82,12 @@ export class GameComponent implements OnInit {
           this.session.clearGameId();
         }
         this.loading = false;
+        this.cdr.markForCheck();
       },
       error: () => {
         this.error = 'Ошибка хода';
         this.loading = false;
+        this.cdr.markForCheck();
       }
     });
   }
@@ -88,15 +96,19 @@ export class GameComponent implements OnInit {
     if (!this.game) return;
 
     this.loading = true;
-    this.gameService.resign(this.game.gameId).subscribe({
+    this.cdr.markForCheck();
+
+    this.gameService.resign(this.game.gameId, this.nickname).subscribe({
       next: (result) => {
         this.game = result;
         this.session.clearGameId();
         this.loading = false;
+        this.cdr.markForCheck();
       },
       error: () => {
         this.error = 'Ошибка при сдаче';
         this.loading = false;
+        this.cdr.markForCheck();
       }
     });
   }
@@ -105,18 +117,23 @@ export class GameComponent implements OnInit {
     this.game = null;
     this.session.clearGameId();
     this.error = '';
+    this.cdr.markForCheck();
   }
 
   private loadGame(gameId: string): void {
     this.loading = true;
+    this.cdr.markForCheck();
+
     this.gameService.getGame(gameId).subscribe({
       next: (game) => {
         this.game = game;
         this.loading = false;
+        this.cdr.markForCheck();
       },
       error: () => {
         this.session.clearGameId();
         this.loading = false;
+        this.cdr.markForCheck();
       }
     });
   }

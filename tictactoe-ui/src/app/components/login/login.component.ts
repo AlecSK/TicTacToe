@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, ChangeDetectorRef } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
@@ -16,6 +16,7 @@ export class LoginComponent {
   private readonly playerService = inject(PlayerService);
   private readonly session = inject(SessionService);
   private readonly router = inject(Router);
+  private readonly cdr = inject(ChangeDetectorRef);
 
   nickname = '';
   loading = false;
@@ -36,6 +37,7 @@ export class LoginComponent {
       error: () => {
         this.error = 'Не удалось войти. Попробуй снова.';
         this.loading = false;
+        this.cdr.markForCheck();
       }
     });
   }

@@ -1,7 +1,7 @@
 import { Injectable, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { GameStateDto, MoveResultDto, LeaderboardEntryDto, PagedResult } from '../models/models';
+import { GameStateDto, MoveResultDto, LeaderboardEntryDto } from '../models/models';
 import { environment } from '../../environments/environment';
 
 @Injectable({ providedIn: 'root' })
@@ -21,12 +21,14 @@ export class GameService {
     return this.http.post<MoveResultDto>(`${this.apiUrl}/games/${gameId}/moves`, { nickname, cellIndex });
   }
 
-  resign(gameId: string): Observable<GameStateDto> {
-    return this.http.delete<GameStateDto>(`${this.apiUrl}/games/${gameId}`);
+  resign(gameId: string, nickname: string): Observable<GameStateDto> {
+    return this.http.delete<GameStateDto>(`${this.apiUrl}/games/${gameId}`, {
+      body: { nickname }
+    });
   }
 
-  getLeaderboard(page: number = 1, pageSize: number = 10): Observable<PagedResult<LeaderboardEntryDto>> {
-    return this.http.get<PagedResult<LeaderboardEntryDto>>(
+  getLeaderboard(page: number = 1, pageSize: number = 10): Observable<LeaderboardEntryDto[]> {
+    return this.http.get<LeaderboardEntryDto[]>(
       `${this.apiUrl}/leaderboard?page=${page}&pageSize=${pageSize}`
     );
   }
