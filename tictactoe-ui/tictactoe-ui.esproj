@@ -1,9 +1,7 @@
 <Project Sdk="Microsoft.VisualStudio.JavaScript.Sdk/1.0.2752196">
   <PropertyGroup>
-    <StartupCommand>npm start</StartupCommand>
+    <StartupCommand>ng serve --open</StartupCommand>
     <ShouldRunBuildScript>false</ShouldRunBuildScript>
-    <StartWebBrowser>True</StartWebBrowser>
-    <BrowserUrl>http://localhost:4200</BrowserUrl>
     <BuildOutputFolder>$(MSBuildProjectDirectory)\dist\tictactoe-ui\browser\</BuildOutputFolder>
   </PropertyGroup>
 </Project>
