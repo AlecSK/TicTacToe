@@ -1,7 +1,6 @@
-
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 17
-VisualStudioVersion = 17.0.31903.59
+# Visual Studio Version 18
+VisualStudioVersion = 18.6.11819.183 stable
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "frontend", "frontend", "{FE4A764C-8468-480D-8F49-C47EC4FB1307}"
 EndProject
@@ -16,6 +15,12 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TicTacToe.Domain", "backend\src\TicTacToe.Domain\TicTacToe.Domain.csproj", "{449D660D-45B8-40DB-A9D1-417F818267D0}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TicTacToe.Infrastructure", "backend\src\TicTacToe.Infrastructure\TicTacToe.Infrastructure.csproj", "{A5373B53-4616-4464-B23A-C1699836AFFF}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "!docs", "!docs", "{DA83C64A-B2EE-4356-B23D-0348FE787841}"
+	ProjectSection(SolutionItems) = preProject
+		PLAN.md = PLAN.md
+		README.md = README.md
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -44,6 +49,9 @@ Global
 		{A5373B53-4616-4464-B23A-C1699836AFFF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A5373B53-4616-4464-B23A-C1699836AFFF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{BB38A52C-C543-4489-B3B7-12443C3CB4CD} = {FE4A764C-8468-480D-8F49-C47EC4FB1307}
 		{EED30DA8-53EE-4615-995E-DB15AC6A825F} = {902E3797-F203-4A38-A83D-F16C1198135D}
@@ -51,7 +59,7 @@ Global
 		{449D660D-45B8-40DB-A9D1-417F818267D0} = {902E3797-F203-4A38-A83D-F16C1198135D}
 		{A5373B53-4616-4464-B23A-C1699836AFFF} = {902E3797-F203-4A38-A83D-F16C1198135D}
 	EndGlobalSection
-	GlobalSection(SolutionProperties) = preSolution
-		HideSolutionNode = FALSE
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {B84879EF-E8F7-4884-ACEA-856B1680A08D}
 	EndGlobalSection
 EndGlobal

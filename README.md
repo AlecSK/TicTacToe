@@ -32,6 +32,7 @@ docker compose down -v
 
 | Инструмент | Версия |
 |---|---|
+| Visual Studio | 2022+ |
 | .NET SDK | 8.0+ |
 | Node.js | 22+ |
 | npm | 11+ |
@@ -53,7 +54,7 @@ Host=localhost  Port=5432  Database=tictactoe  User=postgres  Password=postgres
 
 ### 2. Backend
 
-**Visual Studio 2022** — открыть `backend/TicTacToe.sln`, выбрать профиль **http** и нажать F5.  
+Открыть `backend/TicTacToe.sln` в Visual Studio, выбрать профиль **http** и нажать F5.  
 API поднимается на `http://localhost:5000`, Swagger открывается автоматически.  
 Миграции применяются при старте — ничего дополнительного делать не нужно.
 
@@ -66,12 +67,10 @@ dotnet run --project src/TicTacToe.API
 
 ### 3. Frontend
 
-**Visual Studio 2022** — открыть корневой `TicTacToe.sln` (содержит и бэкенд, и фронтенд).  
+Открыть корневой `TicTacToe.sln` в Visual Studio.  
 В Solution Explorer правой кнопкой на `tictactoe-ui` → **Set as Startup Project**, затем F5.  
-Angular dev-сервер запускается командой `npm start`, браузер открывается на `http://localhost:4200`.
-
-> Требуется Visual Studio 2022 17.3+ с установленным компонентом  
-> **Node.js development tools** (проверить: Installer → Individual components → Node.js development support).
+Angular dev-сервер запускается командой `npm start`, браузер открывается на `http://localhost:4200`.  
+Фронтенд обращается к API напрямую по адресу `http://localhost:5000/api` (CORS настроен).
 
 **Командная строка:**
 
@@ -80,8 +79,6 @@ cd tictactoe-ui
 npm install
 npm start
 ```
-
-Приложение откроется на `http://localhost:4200`.
 
 **Тесты:**
 
