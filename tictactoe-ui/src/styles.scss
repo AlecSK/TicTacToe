@@ -1,0 +1,86 @@
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  background: #11111b;
+  color: #cdd6f4;
+  line-height: 1.5;
+}
+
+// Buttons
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.6rem 1.25rem;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  cursor: pointer;
+  border: 1px solid transparent;
+  transition: background 0.15s, opacity 0.15s;
+  text-decoration: none;
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  &.btn-primary {
+    background: #89b4fa;
+    color: #11111b;
+    &:hover:not(:disabled) { background: #74c7ec; }
+  }
+
+  &.btn-secondary {
+    background: #f38ba8;
+    color: #11111b;
+    &:hover:not(:disabled) { background: #eba0ac; }
+  }
+
+  &.btn-danger {
+    background: transparent;
+    border-color: #f38ba8;
+    color: #f38ba8;
+    &:hover:not(:disabled) { background: rgba(243, 139, 168, 0.1); }
+  }
+
+  &.btn-ghost {
+    background: transparent;
+    border-color: #313244;
+    color: #cdd6f4;
+    &:hover:not(:disabled) { background: #1e1e2e; }
+  }
+}
+
+// Input
+.input {
+  width: 100%;
+  padding: 0.7rem 1rem;
+  background: #11111b;
+  border: 1px solid #313244;
+  border-radius: 8px;
+  color: #cdd6f4;
+  font-size: 1rem;
+  outline: none;
+  transition: border-color 0.15s;
+
+  &:focus { border-color: #89b4fa; }
+  &::placeholder { color: #585b70; }
+  &:disabled { opacity: 0.5; }
+}
+
+// Error
+.error {
+  color: #f38ba8;
+  font-size: 0.875rem;
+  text-align: center;
+}

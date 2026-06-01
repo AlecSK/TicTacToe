@@ -1,0 +1,12 @@
+<button
+  class="cell"
+  [class.x-mark]="mark === 'X'"
+  [class.o-mark]="mark === 'O'"
+  [class.winning-cell]="isWinning"
+  [class.empty]="mark === '-'"
+  [disabled]="disabled || mark !== '-'"
+  (click)="onClick()"
+  type="button"
+>
+  {{ mark !== '-' ? mark : '' }}
+</button>

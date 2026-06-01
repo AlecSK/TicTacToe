@@ -1,0 +1,57 @@
+<div class="lb-page">
+  <header class="lb-header">
+    <h1>Лидерборд</h1>
+    <a routerLink="/game" class="btn btn-ghost">← Игра</a>
+  </header>
+
+  @if (loading) {
+    <p class="loading">Загрузка...</p>
+  }
+
+  @if (error) {
+    <p class="error">{{ error }}</p>
+  }
+
+  @if (!loading && entries.length > 0) {
+    <div class="table-wrapper">
+      <table class="lb-table">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Игрок</th>
+            <th>Победы</th>
+            <th>Поражения</th>
+            <th>Ничьи</th>
+            <th>Игры</th>
+            <th>Win%</th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (entry of entries; track entry.id; let i = $index) {
+            <tr [class.current-player]="entry.nickname === currentNickname">
+              <td class="rank">{{ (page - 1) * pageSize + i + 1 }}</td>
+              <td class="name">{{ entry.nickname }}</td>
+              <td class="wins">{{ entry.wins }}</td>
+              <td class="losses">{{ entry.losses }}</td>
+              <td>{{ entry.draws }}</td>
+              <td>{{ entry.totalGames }}</td>
+              <td class="winrate">{{ entry.winRate }}%</td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+
+    @if (totalPages > 1) {
+      <div class="pagination">
+        <button class="btn btn-ghost" (click)="goToPage(page - 1)" [disabled]="page === 1">←</button>
+        <span>{{ page }} / {{ totalPages }}</span>
+        <button class="btn btn-ghost" (click)="goToPage(page + 1)" [disabled]="page === totalPages">→</button>
+      </div>
+    }
+  }
+
+  @if (!loading && entries.length === 0 && !error) {
+    <p class="empty">Пока нет завершённых игр</p>
+  }
+</div>

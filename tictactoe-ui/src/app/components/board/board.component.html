@@ -1,0 +1,11 @@
+<div class="board">
+  @for (cell of cells; track $index) {
+    <app-cell
+      [mark]="cell"
+      [disabled]="disabled"
+      [isWinning]="winningCells.has($index)"
+      [index]="$index"
+      (cellClicked)="cellClicked.emit($event)"
+    />
+  }
+</div>
