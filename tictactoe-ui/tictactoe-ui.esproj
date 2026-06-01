@@ -1,0 +1,9 @@
+<Project Sdk="Microsoft.VisualStudio.JavaScript.Sdk/0.5.200-alpha">
+  <PropertyGroup>
+    <StartupCommand>npm start</StartupCommand>
+    <ShouldRunBuildScript>false</ShouldRunBuildScript>
+    <StartWebBrowser>True</StartWebBrowser>
+    <BrowserUrl>http://localhost:4200</BrowserUrl>
+    <TypeScriptCompilerVersion>latest</TypeScriptCompilerVersion>
+  </PropertyGroup>
+</Project>

@@ -51,17 +51,13 @@ docker compose up postgres -d
 Host=localhost  Port=5432  Database=tictactoe  User=postgres  Password=postgres
 ```
 
-### 2. Backend (Visual Studio)
+### 2. Backend
 
-Открыть `backend/TicTacToe.sln` в Visual Studio 2022.
+**Visual Studio 2022** — открыть `backend/TicTacToe.sln`, выбрать профиль **http** и нажать F5.  
+API поднимается на `http://localhost:5000`, Swagger открывается автоматически.  
+Миграции применяются при старте — ничего дополнительного делать не нужно.
 
-Выбрать профиль запуска **http** (или **https**) и нажать F5.
-
-API поднимается на `http://localhost:5000`, Swagger открывается автоматически.
-
-Миграции применяются при старте автоматически — ничего дополнительно делать не нужно.
-
-**Из командной строки:**
+**Командная строка:**
 
 ```bash
 cd backend
@@ -70,14 +66,22 @@ dotnet run --project src/TicTacToe.API
 
 ### 3. Frontend
 
+**Visual Studio 2022** — открыть корневой `TicTacToe.sln` (содержит и бэкенд, и фронтенд).  
+В Solution Explorer правой кнопкой на `tictactoe-ui` → **Set as Startup Project**, затем F5.  
+Angular dev-сервер запускается командой `npm start`, браузер открывается на `http://localhost:4200`.
+
+> Требуется Visual Studio 2022 17.3+ с установленным компонентом  
+> **Node.js development tools** (проверить: Installer → Individual components → Node.js development support).
+
+**Командная строка:**
+
 ```bash
 cd tictactoe-ui
 npm install
 npm start
 ```
 
-Приложение откроется на `http://localhost:4200`.  
-Запросы к `/api/` автоматически проксируются на `http://localhost:5000`.
+Приложение откроется на `http://localhost:4200`.
 
 **Тесты:**
 
@@ -85,13 +89,24 @@ npm start
 npm test
 ```
 
+### 4. Полный стек из Visual Studio
+
+Открыть корневой `TicTacToe.sln`. Настроить несколько стартовых проектов:
+
+1. Правой кнопкой на Solution → **Properties**
+2. Common Properties → **Startup Project** → **Multiple startup projects**
+3. Для `TicTacToe.API` и `tictactoe-ui` выбрать Action = **Start**
+4. Нажать F5 — запустятся оба проекта одновременно
+
 ---
 
 ## Архитектура
 
 ```
+TicTacToe.sln              # корневое решение (фронтенд + бэкенд)
 docker-compose.yml
 ├── tictactoe-ui/          # Angular 21 (nginx:alpine в Docker)
+│   ├── tictactoe-ui.esproj
 │   ├── src/app/
 │   │   ├── components/    # game, board, cell, login, leaderboard
 │   │   ├── services/      # GameService, SessionService
@@ -99,7 +114,7 @@ docker-compose.yml
 │   │   └── models/        # TypeScript типы
 │   └── Dockerfile
 └── backend/               # ASP.NET Core 8
-    ├── TicTacToe.sln
+    ├── TicTacToe.sln      # решение только для бэкенда
     ├── src/
     │   ├── TicTacToe.Domain/        # сущности, перечисления
     │   ├── TicTacToe.Application/   # CQRS (MediatR), minimax AI

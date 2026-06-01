@@ -1,0 +1,57 @@
+
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "frontend", "frontend", "{FE4A764C-8468-480D-8F49-C47EC4FB1307}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "backend", "backend", "{902E3797-F203-4A38-A83D-F16C1198135D}"
+EndProject
+Project("{54A90642-561A-4BB1-A94E-469ADEE60C69}") = "tictactoe-ui", "tictactoe-ui\tictactoe-ui.esproj", "{BB38A52C-C543-4489-B3B7-12443C3CB4CD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TicTacToe.API", "backend\src\TicTacToe.API\TicTacToe.API.csproj", "{EED30DA8-53EE-4615-995E-DB15AC6A825F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TicTacToe.Application", "backend\src\TicTacToe.Application\TicTacToe.Application.csproj", "{74F1E82F-CEC1-49C5-B93B-3BD48CAD3929}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TicTacToe.Domain", "backend\src\TicTacToe.Domain\TicTacToe.Domain.csproj", "{449D660D-45B8-40DB-A9D1-417F818267D0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TicTacToe.Infrastructure", "backend\src\TicTacToe.Infrastructure\TicTacToe.Infrastructure.csproj", "{A5373B53-4616-4464-B23A-C1699836AFFF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BB38A52C-C543-4489-B3B7-12443C3CB4CD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BB38A52C-C543-4489-B3B7-12443C3CB4CD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BB38A52C-C543-4489-B3B7-12443C3CB4CD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BB38A52C-C543-4489-B3B7-12443C3CB4CD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EED30DA8-53EE-4615-995E-DB15AC6A825F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EED30DA8-53EE-4615-995E-DB15AC6A825F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EED30DA8-53EE-4615-995E-DB15AC6A825F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EED30DA8-53EE-4615-995E-DB15AC6A825F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{74F1E82F-CEC1-49C5-B93B-3BD48CAD3929}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{74F1E82F-CEC1-49C5-B93B-3BD48CAD3929}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{74F1E82F-CEC1-49C5-B93B-3BD48CAD3929}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{74F1E82F-CEC1-49C5-B93B-3BD48CAD3929}.Release|Any CPU.Build.0 = Release|Any CPU
+		{449D660D-45B8-40DB-A9D1-417F818267D0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{449D660D-45B8-40DB-A9D1-417F818267D0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{449D660D-45B8-40DB-A9D1-417F818267D0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{449D660D-45B8-40DB-A9D1-417F818267D0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A5373B53-4616-4464-B23A-C1699836AFFF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A5373B53-4616-4464-B23A-C1699836AFFF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A5373B53-4616-4464-B23A-C1699836AFFF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A5373B53-4616-4464-B23A-C1699836AFFF}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{BB38A52C-C543-4489-B3B7-12443C3CB4CD} = {FE4A764C-8468-480D-8F49-C47EC4FB1307}
+		{EED30DA8-53EE-4615-995E-DB15AC6A825F} = {902E3797-F203-4A38-A83D-F16C1198135D}
+		{74F1E82F-CEC1-49C5-B93B-3BD48CAD3929} = {902E3797-F203-4A38-A83D-F16C1198135D}
+		{449D660D-45B8-40DB-A9D1-417F818267D0} = {902E3797-F203-4A38-A83D-F16C1198135D}
+		{A5373B53-4616-4464-B23A-C1699836AFFF} = {902E3797-F203-4A38-A83D-F16C1198135D}
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
