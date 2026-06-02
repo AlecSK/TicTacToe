@@ -75,7 +75,7 @@ npm install
 npm start
 ```
 
-Angular поднимается на `http://localhost:4200`. Запросы к `/api` проксируются на `http://localhost:5000` — бэкенд должен быть запущен.
+Angular поднимается на `http://localhost:4200` и автоматически открывает браузер (`ng serve --open`). Запросы к `/api` проксируются на `http://localhost:5000` — бэкенд должен быть запущен.
 
 **Тесты:**
 
