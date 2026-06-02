@@ -60,6 +60,11 @@ Host=localhost  Port=5432  Database=tictactoe  User=postgres  Password=postgres
 
 **VS Code:** открыть корневую папку проекта, в панели Run & Debug выбрать конфигурацию **TicTacToe (backend + frontend)** и нажать **F5**.
 
+> **Важно:** перед запуском через VS Code убедись, что бэкенд не запущен в другом месте (Visual Studio, терминал). Если процесс `TicTacToe.API` уже работает, сборка упадёт с ошибкой блокировки DLL-файлов. Остановить вручную:
+> ```powershell
+> Stop-Process -Name TicTacToe.API -Force -ErrorAction SilentlyContinue
+> ```
+
 Что происходит автоматически:
 1. ASP.NET Core поднимается на `http://localhost:5000`
 2. SpaProxy запускает `npm start` — Angular стартует на `http://localhost:4200`
