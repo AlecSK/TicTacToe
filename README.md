@@ -52,27 +52,22 @@ docker compose up postgres -d
 Host=localhost  Port=5432  Database=tictactoe  User=postgres  Password=postgres
 ```
 
-### 2. Backend
+### 2. Backend + Frontend из Visual Studio (F5)
 
-Открыть `backend/TicTacToe.sln` в Visual Studio, выбрать профиль **http** и нажать F5.  
-API поднимается на `http://localhost:5000`, Swagger открывается автоматически.  
-Миграции применяются при старте — ничего дополнительного делать не нужно.
+Открыть корневой `TicTacToe.sln` в Visual Studio. Убедиться что стартовый проект — **TicTacToe.API**, и нажать **F5**.
 
-**Командная строка:**
+Что происходит автоматически:
+1. ASP.NET Core поднимается на `http://localhost:5000`
+2. SpaProxy запускает `npm start` — Angular стартует на `http://localhost:4200`
+3. Браузер открывается и ждёт Angular (~30–60 секунд первая компиляция)
+4. После готовности Angular браузер переходит на игру
 
-```bash
-cd backend
-dotnet run --project src/TicTacToe.API
-```
+Миграции применяются при старте — вручную ничего делать не нужно.
 
-### 3. Frontend
+> **Первый запуск:** нужно ввести никнейм на странице входа — он создаётся в БД автоматически.  
+> **Если видишь ошибку "Player not found"** — в браузере открой DevTools → Application → Local Storage → удали `ttt_nickname` и `ttt_game_id`, затем обнови страницу.
 
-Открыть корневой `TicTacToe.sln` в Visual Studio.  
-В Solution Explorer правой кнопкой на `tictactoe-ui` → **Set as Startup Project**, затем F5.  
-Angular dev-сервер запускается командой `npm start`, браузер открывается на `http://localhost:4200`.  
-Фронтенд обращается к API напрямую по адресу `http://localhost:5000/api` (CORS настроен).
-
-**Командная строка:**
+### 3. Только Frontend (отдельно)
 
 ```bash
 cd tictactoe-ui
@@ -80,20 +75,20 @@ npm install
 npm start
 ```
 
+Angular поднимается на `http://localhost:4200`. Запросы к `/api` проксируются на `http://localhost:5000` — бэкенд должен быть запущен.
+
 **Тесты:**
 
 ```bash
 npm test
 ```
 
-### 4. Полный стек из Visual Studio
+### 4. Backend из командной строки
 
-Открыть корневой `TicTacToe.sln`. Настроить несколько стартовых проектов:
-
-1. Правой кнопкой на Solution → **Properties**
-2. Common Properties → **Startup Project** → **Multiple startup projects**
-3. Для `TicTacToe.API` и `tictactoe-ui` выбрать Action = **Start**
-4. Нажать F5 — запустятся оба проекта одновременно
+```bash
+cd backend
+dotnet run --project src/TicTacToe.API
+```
 
 ---
 
