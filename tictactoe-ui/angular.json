@@ -68,7 +68,7 @@
           "builder": "@angular/build:dev-server",
           "options": {
             "port": 4200,
-            "proxyConfig": "src/proxy.conf.js"
+            "proxyConfig": "proxy.conf.json"
           },
           "configurations": {
             "production": {
