@@ -32,11 +32,13 @@ docker compose down -v
 
 | Инструмент | Версия |
 |---|---|
-| Visual Studio | 2022+ |
+| Visual Studio 2022+ **или** VS Code | — |
 | .NET SDK | 8.0+ |
 | Node.js | 22+ |
 | npm | 11+ |
 | PostgreSQL | 17 |
+
+VS Code: нужно расширение **C# Dev Kit** (`ms-dotnettools.csdevkit`).
 
 ### 1. База данных
 
@@ -52,9 +54,11 @@ docker compose up postgres -d
 Host=localhost  Port=5432  Database=tictactoe  User=postgres  Password=postgres
 ```
 
-### 2. Backend + Frontend из Visual Studio (F5)
+### 2. Backend + Frontend из Visual Studio или VS Code (F5)
 
-Открыть корневой `TicTacToe.sln` в Visual Studio. Убедиться что стартовый проект — **TicTacToe.API**, и нажать **F5**.
+**Visual Studio:** открыть корневой `TicTacToe.sln`, убедиться что стартовый проект — **TicTacToe.API**, нажать **F5**.
+
+**VS Code:** открыть корневую папку проекта, в панели Run & Debug выбрать конфигурацию **TicTacToe (backend + frontend)** и нажать **F5**.
 
 Что происходит автоматически:
 1. ASP.NET Core поднимается на `http://localhost:5000`
